@@ -5,9 +5,9 @@ from .models import *
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        print(self.scope['url_route'])
         self.room_name = self.scope['url_route']['kwargs']['room_name']
-        # self.user_name = self.scope['url_route']['kwargs']['user_name']
-        self.user_name = self.scope['query_string'].decode('utf8')
+        self.user_name = self.scope['url_route']['kwargs']['user_name']
         self.room_group_name = 'chat_%s' % self.room_name
 
         count = getattr(self.channel_layer, self.room_group_name, 0)
