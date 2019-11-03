@@ -62,6 +62,8 @@
         'ws://' + window.location.host +
         '/ws/chat/' + roomName + '/' + 'junsik/');
 
+    console.log(chatSocket);
+
     chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
         var message = data['message'];
