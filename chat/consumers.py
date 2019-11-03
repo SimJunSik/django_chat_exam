@@ -5,7 +5,6 @@ from .models import *
 
 class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        print(self.scope['url_route'])
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.user_name = 'hihi'
         self.room_group_name = 'chat_%s' % self.room_name
